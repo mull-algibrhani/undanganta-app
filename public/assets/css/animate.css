@@ -1,0 +1,144 @@
+@keyframes slideInFromTop {
+ 0% {
+   transform: translatey(-100%);
+ }
+ 100% {
+   transform: translatey(0);
+ }
+}
+@keyframes slideInFromBottom {
+ 0% {
+  transform: translatey(100%);
+}
+100% {
+  transform: translatey(0);
+}
+}
+@keyframes slideInFromLeft {
+ 0% {
+   transform: translatex(-100%);
+ }
+ 100% {
+   transform: translatex(0);
+ }
+}
+@keyframes slideInFromRight {
+ 0% {
+   transform: translatex(100%);
+ }
+ 100% {
+   transform: translatex(0);
+ }
+}
+
+@keyframes zoom-in {
+ 0% {
+   transform: scale(0, 0);
+ }
+ 100% {
+   transform: scale(1, 1);
+ }
+}
+
+ @-webkit-keyframes scale-up-br {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+
+@keyframes scale-up-bl {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 0% 100%;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: 0% 100%;
+  }
+}
+
+@keyframes scale-up-br {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 100% 100%;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: 100% 100%;
+  }
+}
+
+@keyframes scale-up-bottom {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 50% 100%;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: 50% 100%;
+  }
+}
+
+.zoom-in-1 {
+ animation: zoom-in 1s ease-out;
+}
+.zoom-in-2 {
+ animation: zoom-in 2s ease-out;
+}
+.zoom-in-3 {
+ animation: zoom-in 3s ease-out;
+}
+.zoom-in-4 {
+ animation: zoom-in 4s ease-out;
+}
+.zoom-in-fast-1 {
+  animation: zoom-in 0.8s ease-out;
+ }
+.top-down {  
+ animation: 0.5s ease-out 0s 1 slideInFromTop;
+}
+.bottom-up {  
+ animation: 0.8s ease-out 0s 1 slideInFromBottom;
+}
+.from-left {  
+ animation: 0.5s ease-out 0s 1 slideInFromLeft;
+
+}
+.from-left-2 {  
+ animation: 0.2s ease-out 0s 1 slideInFromLeft;
+
+}
+.from-right {  
+ animation: 0.5s ease-out 0s 1 slideInFromRight;
+
+}
+.from-right-2 {  
+ animation: 0.8s ease-out 0s 1 slideInFromRight;
+
+}
+
+.scale-up-bl {
+	animation: scale-up-bl 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.scale-up-br {
+	animation: scale-up-br 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.scale-up-bottom {
+	animation: scale-up-bottom 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+select:focus>option:checked {
+  background-color: rgb(139 92 246);
+  /* selected */
+ }
