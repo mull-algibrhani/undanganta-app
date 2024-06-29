@@ -1,5 +1,5 @@
 <x-slot name="title">
- {{ __('Daftar Tamu') }}
+ {{ __('Daftar reservasi') }}
 </x-slot>
 <div class="md:container px-6 py-2 sm:px-3 mx-auto grid">
  <!-- CTA -->
@@ -7,7 +7,7 @@
   class="top-down flex items-center justify-between py-2 mb-2 text-sm font-semibold text-white bg-violet-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-violet"
   href="/daftar-tamu" wire:navigate>
   <div class="flex items-center px-4">
-   <span class="text-lg font-semibold">Daftar Tamu</span>
+   <span class="text-lg font-semibold">Daftar Reservasi</span>
   </div>
  </a>
  <div class="bottom-up">
@@ -25,25 +25,21 @@
       </div>
      </div>
     </div>
-    <div class="flex justify-end">
-     <a wire:navigate href="/tambah-tamu"
-      class="bg-violet-600 inline-flex my-2 mr-2 px-2 py-2 text-sm font-medium leading-5 text-white rounded-lg focus:outline-none"
-      aria-label="Delete">
-      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-       <path fill-rule="evenodd"
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-        clip-rule="evenodd"></path>
-      </svg>
-      <span class=" ml-1">Tambah Tamu</span>
-     </a>
-    </div>
+    <!-- <div class="flex justify-end">
+          <a wire:navigate href="/tambah-tamu" class="bg-violet-600 inline-flex my-2 mr-2 px-2 py-2 text-sm font-medium leading-5 text-white rounded-lg focus:outline-none" aria-label="Delete">
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+            </svg>
+            <span class=" ml-1">Tambah Tamu</span>
+          </a>
+        </div> -->
    </div>
    <div class="mx-auto py-1 sm:py-4 sm:px-4 lg:px-8">
     <div class="grid grid-cols-1 gap-6">
      <!-- New Table -->
      <div class="bottom-up w-full overflow-hidden rounded-lg shadow-xs">
-      <div x-data="tableCopy()" class="w-full overflow-x-auto">
-       @if($datatamu->count() > 0)
+      <div class="w-full overflow-x-auto">
+       @if($datareservasi->count() > 0)
        <table class="w-full whitespace-no-wrap">
         <thead>
          <tr
@@ -51,13 +47,13 @@
           <th class="px-4 py-3"></th>
           <th class="px-4 py-3">Nama</th>
           <th class="px-4 py-3">Alamat</th>
-          <th class="px-4 py-3">link</th>
+          <th class="px-4 py-3">Status</th>
           <th class="px-4 py-3">Action</th>
          </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
          <?php $no = 1; ?>
-         @foreach($datatamu as $tamu)
+         @foreach($datareservasi as $tamu)
          <tr class="text-gray-700 dark:text-gray-400">
           <td class="px-4 py-3">
            <div class="flex items-center text-sm">
@@ -85,52 +81,17 @@
             </div>
            </div>
           </td>
-          <td class="px-4 py-3 text-sm sm:text-xs">
-           https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}
+          <td class="px-4 py-3 text-xs">
+           <div class="flex items-center text-sm sm:text-xs">
+            <div>
+             <p class="font-semibold">
+              {{$tamu->status}}
+             </p>
+            </div>
+           </div>
           </td>
           <td class="px-4 py-3 text-xs">
            <div class="flex items-center space-x-3">
-            <div class="relative">
-             <button
-              @click="copy('https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}')"
-              class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-sky-500 border border-transparent rounded-lg active:bg-sky-600 hover:bg-sky-600 focus:outline-none focus:shadow-outline-sky">
-              <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-               <path fill-rule="evenodd"
-                d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
-              </svg>
-              <span>Copy</span>
-             </button>
-             <div
-              x-show="copied && copiedText === 'https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}'"
-              class="absolute top-0 right-0 mt-0 p-2 bg-green-500 text-white rounded" x-transition>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-4 w-4" viewBox="0 0 16 16">
-               <path
-                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
-               <path
-                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
-              </svg>
-             </div>
-            </div>
-
-            <a href="/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}" target="_blank"
-             class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-violet-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-             <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-              <path fill-rule="evenodd"
-               d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-               clip-rule="evenodd" />
-             </svg>
-             <span>View</span>
-            </a>
-            <a wire:navigate href="/edit-tamu/{{$tamu->id}}"
-             class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-700 hover:bg-green-700 focus:outline-none focus:shadow-outline-yellow">
-             <svg class="w-3 h-3 mr-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-              <path
-               d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-              </path>
-             </svg>
-             <span>Edit</span>
-            </a>
             <button wire:click="delete({{$tamu->id}})" wire:confirm="Apakah kamu yakin menghapus data ini?"
              partner-id="id"
              class="confirdeletepartner flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
@@ -150,7 +111,7 @@
        </table>
        @else
        <div class="flex justify-center py-4 text-gray-500 dark:text-gray-400">
-        <p>Daftar tamu tidak ditemukan.</p>
+        <p>Daftar reservasi tidak ditemukan.</p>
        </div>
        @endif
       </div>
@@ -161,27 +122,27 @@
  </div>
 </div>
 
-<script>
-function tableCopy() {
- return {
-  copied: false,
-  copiedText: '',
-  async copy(text) {
-   try {
-    await navigator.clipboard.writeText(text);
-    this.copied = true;
-    this.copiedText = text;
-    setTimeout(() => {
-     this.copied = false;
-     this.copiedText = '';
-    }, 2000); // Reset after 2 seconds
-   } catch (err) {
-    console.error('Failed to copy: ', err);
-   }
+<!-- <script>
+  function tableCopy() {
+    return {
+      copied: false,
+      copiedText: '',
+      async copy(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          this.copied = true;
+          this.copiedText = text;
+          setTimeout(() => {
+            this.copied = false;
+            this.copiedText = '';
+          }, 2000); // Reset after 2 seconds
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
+      }
+    }
   }
- }
-}
-</script>
+</script> -->
 <!-- <script>
 //confirm delete
 window.$('.confirdeletepartner').click(function() {

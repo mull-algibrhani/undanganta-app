@@ -1,20 +1,27 @@
 <?php
 
+use App\Http\Controllers\UndanganController;
+use App\Livewire\Dashboard\Dashboard;
+use App\Livewire\Tamu\CreateTamu;
+use App\Livewire\Tamu\EditTamu;
+use App\Livewire\Tamu\ListReservasi;
+use App\Livewire\Tamu\ListTamu;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
-Route::view('/dari-adi-saputra-dan-rismawati/kepada-yth/', 'adidanrisma');
+// Route::view('/dari-adi-saputra-dan-rismawati/kepada-yth-{slug}', 'adi-dan-risma');
+Route::get('/dari-adi-saputra-dan-rismawati/kepada-yth-{slug}', [UndanganController::class, 'sigle_undangan'])->name('sigle_undangan');
+Route::post('/submit-rsvp', [UndanganController::class, 'save_rsvp'])->name('submit-rsvp');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
+Route::view('profile', 'livewire.profile.profile')
     ->middleware(['auth', 'verified'])
     ->name('profile');
 
-Route::view('/daftar-tamu', 'livewire.tamu.list-tamu')
-    ->middleware(['auth', 'verified'])
-    ->name('daftar-tamu');
+Route::middleware(['auth', 'verified'])->get('/dashboard', Dashboard::class)->name('dashboard');
+Route::middleware(['auth', 'verified'])->get('/daftar-tamu', ListTamu::class)->name('daftar-tamu');
+Route::middleware(['auth', 'verified'])->get('/tambah-tamu', CreateTamu::class)->name('create-tamu');
+Route::middleware(['auth', 'verified'])->get('/edit-tamu/{id}', EditTamu::class)->name('edit-tamu');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])->get('/daftar-tamu-reservasi', ListReservasi::class)->name('daftar-tamu-reservasi');
+
+require __DIR__ . '/auth.php';

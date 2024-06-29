@@ -1,3 +1,4 @@
+
 function data() {
  function getThemeFromLocalStorage() {
   // if user already changed the theme, use it
@@ -15,7 +16,6 @@ function data() {
  function setThemeToLocalStorage(value) {
   window.localStorage.setItem('dark', value)
  }
-
 
  return {
   dark: getThemeFromLocalStorage(),
@@ -37,36 +37,6 @@ function data() {
   openMenu: function openMenu() {
    this.HideMenu = !1;
   },
-  // isNotificationsMenuOpen: false,
-  // toggleNotificationsMenu() {
-  //  this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
-  // },
-  // closeNotificationsMenu() {
-  //  this.isNotificationsMenuOpen = false
-  // },
-  // isProfileMenuOpen: false,
-  // toggleProfileMenu() {
-  //  this.isProfileMenuOpen = !this.isProfileMenuOpen
-  // },
-  // closeProfileMenu() {
-  //  this.isProfileMenuOpen = false
-  // },
-  // isPostMenuOpen: false,
-  // togglePostMenu() {
-  //  this.isPostMenuOpen = !this.isPostMenuOpen
-  // },
-  // isGaleriMenuOpen: false,
-  // toggleGaleriMenu() {
-  //  this.isGaleriMenuOpen = !this.isGaleriMenuOpen
-  // },
-  // isTeamsMenuOpen: false,
-  // toggleTeamsMenu() {
-  //  this.isTeamsMenuOpen = !this.isTeamsMenuOpen
-  // },
-  // isSettingsMenuOpen: false,
-  // toggleSettingsMenu() {
-  //  this.isSettingsMenuOpen = !this.isSettingsMenuOpen
-  // },
   // // Modal
   // isModalOpen: false,
   // trapCleanup: null,
@@ -79,7 +49,7 @@ function data() {
   //  this.trapCleanup()
   // },
  }
-}
+};
 
 function animasiHeader() {
  return {
@@ -90,5 +60,7 @@ function animasiHeader() {
     sessionStorage.setItem("runAnimasiHeader", "true");
    }
   }
- };
-}
+ }
+ 
+};
+
