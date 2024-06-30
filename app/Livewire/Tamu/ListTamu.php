@@ -23,16 +23,16 @@ class ListTamu extends Component
 
     public function render()
     {
-        $query = Tamu::where('user_id', Auth::id())
-            ->where(function ($query) {
-                $query->where('nama', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('alamat', 'LIKE', '%' . $this->search . '%');
-            });
+        $query = Tamu::where(function ($query) {
+            $query->where('nama', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('alamat', 'LIKE', '%' . $this->search . '%');
+        });
 
         $tamus = $query->orderBy('created_at', 'desc')->paginate($this->perPage);
 
         return view('livewire.tamu.list-tamu', ['datatamu' => $tamus]);
     }
+
 
     public function delete($id)
     {
@@ -45,4 +45,18 @@ class ListTamu extends Component
             session()->flash('error', 'Tamu tidak ditemukan atau Anda tidak memiliki izin untuk menghapusnya.');
         }
     }
+
+    // Fungsi untuk tamu berasarkan user
+    // public function render()
+    // {
+    //     $query = Tamu::where('user_id', Auth::id())
+    //         ->where(function ($query) {
+    //             $query->where('nama', 'LIKE', '%' . $this->search . '%')
+    //                 ->orWhere('alamat', 'LIKE', '%' . $this->search . '%');
+    //         });
+
+    //     $tamus = $query->orderBy('created_at', 'desc')->paginate($this->perPage);
+
+    //     return view('livewire.tamu.list-tamu', ['datatamu' => $tamus]);
+    // }
 }
