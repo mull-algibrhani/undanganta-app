@@ -7,7 +7,7 @@
  <title>Adhy & Risma</title>
  <!-- Open Graph Tags -->
  <meta property="og:title" content="Undangan pernikahan adi saputra dan rismawati" />
- <meta property="og:description" content="Pertemuan kami cukup sekali, tetapi pertemuan ini adalah jalinan takdir yang membawa dua jiwa bertemu pada satu
+ <meta property="og:description" content="Pertemuan kami hanya sekali, tetapi pertemuan ini adalah jalinan takdir yang membawa dua jiwa bertemu pada satu
          titik dalam perjalanan hidup dan harapan-harapan yang mulai tumbuh" />
  <meta property="og:image" content="{{asset('wedding/img/gallery/thumbnail/prawed-4.jpeg')}}" />
  <meta property="og:url" content="https://undanganta.online" />
@@ -16,7 +16,7 @@
  <!-- Twitter Card Tags -->
  <meta name="twitter:card" content="summary_large_image" />
  <meta name="twitter:title" content="Undangan pernikahan adi saputra dan rismawati" />
- <meta name="twitter:description" content="Pertemuan kami cukup sekali, tetapi pertemuan ini adalah jalinan takdir yang membawa dua jiwa bertemu pada satu
+ <meta name="twitter:description" content="Pertemuan kami hanya sekali, tetapi pertemuan ini adalah jalinan takdir yang membawa dua jiwa bertemu pada satu
          titik dalam perjalanan hidup dan harapan-harapan yang mulai tumbuh" />
  <meta name="twitter:image" content="{{asset('wedding/img/gallery/thumbnail/prawed-4.jpeg')}}" />
  <!-- Twitter Card Tags -->
