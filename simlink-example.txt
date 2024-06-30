@@ -1,0 +1,1 @@
+[u286067499@id-dci-web1153 undanganta.online]$ ln -s  /home/u286067499/domains/undanganta.online/undanganta-app/public /home/u286067499/domains/undanganta.online/public_html
