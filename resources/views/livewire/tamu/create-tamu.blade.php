@@ -17,14 +17,15 @@
             <label for="underline_select" class="sr-only">Underline select</label>
             <select wire:model="sapaan" id="underline_select" class="block text-gray-900 py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-400 appearance-none dark:text-white dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
               <option class="text-gray-500 bg-gray-200 dark:bg-gray-700" selected>Sapaan kerabat</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="bapak">Bapak</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="ibu">Ibu</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="saudara">Saudara</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="saudari">Saudari</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Bapak">Bapak</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Ibu">Ibu</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Saudara">Saudara</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Saudari">Saudari</option>
               <option class="bg-gray-200 dark:bg-gray-700" value="kakak">Kakak</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="adik">Adik</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="kakanda">Kakanda</option>
-              <option class="bg-gray-200 dark:bg-gray-700" value="adinda">Adinda</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Adik">Adik</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Kakanda">Kakanda</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Adinda">Adinda</option>
+              <option class="bg-gray-200 dark:bg-gray-700" value="Keluarga Besar">Keluarga Besar</option>
             </select>
             @error('sapaan')
             <p class="text-sm text-red-600">{{ $message }}</p>
