@@ -5,28 +5,44 @@ namespace App\Livewire\Tamu;
 use App\Models\Tamu;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListTamu extends Component
 {
-    public $search;
-    public $tamus;
+    use WithPagination;
 
-    public function mount()
+    public $perPage = 10;
+    public $search = '';
+
+    protected $queryString = ['search'];
+
+    public function updatingSearch()
     {
-        // Mengambil data posts berdasarkan user_id dari pengguna yang sedang login
-        $this->tamus = Tamu::where('user_id', Auth::id())->get();
+        $this->resetPage();
     }
+
     public function render()
     {
-        $this->tamus = Tamu::where('nama', 'LIKE', '%' . $this->search . '%')->orWhere('alamat', 'LIKE', '%' . $this->search . '%')->get();
-        return view('livewire.tamu.list-tamu', ['datatamu' => $this->tamus]);
+        $query = Tamu::where('user_id', Auth::id())
+            ->where(function ($query) {
+                $query->where('nama', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('alamat', 'LIKE', '%' . $this->search . '%');
+            });
+
+        $tamus = $query->paginate($this->perPage);
+
+        return view('livewire.tamu.list-tamu', ['datatamu' => $tamus]);
     }
 
     public function delete($id)
     {
         $tamu = Tamu::find($id);
-        $tamu->delete();
-        session()->flash('success', 'Tamu berhasil dihapus!');
-        $this->redirect('/daftar-tamu', navigate: true);
+        if ($tamu && $tamu->user_id === Auth::id()) {
+            $tamu->delete();
+            session()->flash('success', 'Tamu berhasil dihapus!');
+            $this->redirect('/daftar-tamu', navigate: true);
+        } else {
+            session()->flash('error', 'Tamu tidak ditemukan atau Anda tidak memiliki izin untuk menghapusnya.');
+        }
     }
 }

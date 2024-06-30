@@ -42,7 +42,7 @@
     <div class="grid grid-cols-1 gap-6">
      <!-- New Table -->
      <div class="bottom-up w-full overflow-hidden rounded-lg shadow-xs">
-      <div x-data="tableCopy()" class="w-full overflow-x-auto">
+      <div class="w-full overflow-x-auto">
        @if($datatamu->count() > 0)
        <table class="w-full whitespace-no-wrap">
         <thead>
@@ -56,8 +56,7 @@
          </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-         <?php $no = 1; ?>
-         @foreach($datatamu as $tamu)
+         @foreach($datatamu as $index => $item)
          <tr class="text-gray-700 dark:text-gray-400">
           <td class="px-4 py-3">
            <div class="flex items-center text-sm">
@@ -65,14 +64,14 @@
              <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
             </div>
             <div>
-             <p class="font-semibold">{{$no}}</p>
+             <p class="font-semibold">{{ ($datatamu->currentPage() - 1) * $datatamu->perPage() + $index + 1 }}</p>
             </div>
            </div>
           </td>
           <td class="px-4 py-3 text-xs">
            <div class="flex items-center text-sm sm:text-xs">
             <div>
-             <p class="font-semibold">{{$tamu->nama}}</p>
+             <p class="font-semibold">{{$item->nama}}</p>
             </div>
            </div>
           </td>
@@ -80,19 +79,19 @@
            <div class="flex items-center text-sm sm:text-xs">
             <div>
              <p class="font-semibold">
-              {{$tamu->alamat}}
+              {{$item->alamat}}
              </p>
             </div>
            </div>
           </td>
           <td class="px-4 py-3 text-sm sm:text-xs">
-           https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}
+           https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}
           </td>
           <td class="px-4 py-3 text-xs">
            <div class="flex items-center space-x-3">
             <div class="relative">
              <button
-              @click="copy('https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}')"
+              onclick="copyToClipboard('https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}')"
               class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-sky-500 border border-transparent rounded-lg active:bg-sky-600 hover:bg-sky-600 focus:outline-none focus:shadow-outline-sky">
               <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                <path fill-rule="evenodd"
@@ -100,19 +99,9 @@
               </svg>
               <span>Copy</span>
              </button>
-             <div
-              x-show="copied && copiedText === 'https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}'"
-              class="absolute top-0 right-0 mt-0 p-2 bg-green-500 text-white rounded" x-transition>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-4 w-4" viewBox="0 0 16 16">
-               <path
-                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
-               <path
-                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
-              </svg>
-             </div>
             </div>
 
-            <a href="/dari-adi-saputra-dan-rismawati/kepada-yth-{{$tamu->slug}}" target="_blank"
+            <a href="/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}" target="_blank"
              class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-violet-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
              <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -122,7 +111,7 @@
              </svg>
              <span>View</span>
             </a>
-            <a wire:navigate href="/edit-tamu/{{$tamu->id}}"
+            <a wire:navigate href="/edit-tamu/{{$item->id}}"
              class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-700 hover:bg-green-700 focus:outline-none focus:shadow-outline-yellow">
              <svg class="w-3 h-3 mr-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
               <path
@@ -131,7 +120,7 @@
              </svg>
              <span>Edit</span>
             </a>
-            <button wire:click="delete({{$tamu->id}})" wire:confirm="Apakah kamu yakin menghapus data ini?"
+            <button wire:click="delete({{$item->id}})" wire:confirm="Apakah kamu yakin menghapus data ini?"
              partner-id="id"
              class="confirdeletepartner flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
              <svg class="w-3 h-3 mr-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -144,10 +133,10 @@
            </div>
           </td>
          </tr>
-         <?php $no++; ?>
          @endforeach
         </tbody>
        </table>
+       {{ $datatamu->links() }}
        @else
        <div class="flex justify-center py-4 text-gray-500 dark:text-gray-400">
         <p>Daftar tamu tidak ditemukan.</p>
@@ -159,26 +148,74 @@
    </div>
   </div>
  </div>
+ <!-- Toaster start -->
+ <div x-data="{ alert: false, message: '' }"
+  @toast-message.window="message = $event.detail.message; alert = true; setTimeout(() => alert = false, 3000)">
+  <div id="toast-success" x-show="alert" x-transition:enter="transition ease-out delay-100 duration-300"
+   x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+   x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
+   x-transition:leave-end="opacity-0 scale-90"
+   class="fixed right-0 bottom-0 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+   role="alert">
+   <div
+    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+     <path
+      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+    </svg>
+    <span class="sr-only">Check icon</span>
+   </div>
+   <div class="ml-3 text-sm font-normal" x-text="message"></div>
+   <button @click="alert = false" type="button"
+    class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+    aria-label="Close">
+    <span class="sr-only">Close</span>
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+    </svg>
+   </button>
+  </div>
+ </div>
+ <!-- Toaster end -->
 </div>
 
+
 <script>
-function tableCopy() {
- return {
-  copied: false,
-  copiedText: '',
-  async copy(text) {
-   try {
-    await navigator.clipboard.writeText(text);
-    this.copied = true;
-    this.copiedText = text;
-    setTimeout(() => {
-     this.copied = false;
-     this.copiedText = '';
-    }, 2000); // Reset after 2 seconds
-   } catch (err) {
-    console.error('Failed to copy: ', err);
+function copyToClipboard(text) {
+ if (navigator.clipboard && navigator.clipboard.writeText) {
+  navigator.clipboard.writeText(text).then(function() {
+   window.dispatchEvent(new CustomEvent('toast-message', {
+    detail: {
+     message: 'Alamat berhasil disalin ke clipboard!'
+    }
+   }));
+  }).catch(function(error) {
+   console.error('Gagal menyalin teks ke clipboard: ', error);
+  });
+ } else {
+  // Fallback method
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+   var successful = document.execCommand('copy');
+   if (successful) {
+    window.dispatchEvent(new CustomEvent('toast-message', {
+     detail: {
+      message: 'Alamat berhasil disalin ke clipboard!'
+     }
+    }));
+   } else {
+    console.error('Gagal menyalin teks ke clipboard');
    }
+  } catch (err) {
+   console.error('Gagal menyalin teks ke clipboard: ', err);
   }
+  document.body.removeChild(textArea);
  }
 }
 </script>
