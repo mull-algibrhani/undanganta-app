@@ -29,7 +29,7 @@ class ListTamu extends Component
                     ->orWhere('alamat', 'LIKE', '%' . $this->search . '%');
             });
 
-        $tamus = $query->paginate($this->perPage);
+        $tamus = $query->orderBy('created_at', 'desc')->paginate($this->perPage);
 
         return view('livewire.tamu.list-tamu', ['datatamu' => $tamus]);
     }
