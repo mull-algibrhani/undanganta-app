@@ -1,55 +1,72 @@
 <div class=" text-gray-500 dark:text-gray-400">
-  <div>
-    <!-- <div
+ <div>
+  <!-- <div
    class="mt-2 flex justify-center bg-gray-white transition-colors duration-150 hover:text-violet-500 dark:hover:text-violet-400 uppercase dark:text-gray-50 text-gray-600 font-bold text-lg">
    <a href="/dashboard" rel="noopener noreferrer">
     <h2>{{ config('app.name') }}</h2>
    </a>
   </div> -->
-    <a href="/dashboard" wire:navigate @click="closeMenuMobile" class=" flex justify-center text-lg font-bold dark:bg-gray-800 shadow-md bg-white text-gray-800 dark:text-gray-200
+  <a href="/dashboard" wire:navigate @click="closeMenuMobile" class=" flex justify-center text-lg font-bold dark:bg-gray-800 shadow-md bg-white text-gray-800 dark:text-gray-200
    border-b dark:border-gray-900 border-gray-300" aria-label="Logo">
-      <x-application-logo class="w-28 h-16 mt-2.5 mb-2 text-violet-600 dark:text-violet-300 hover:text-violet-700 dark:hover:text-violet-500" />
-    </a>
-  </div>
-  <div class=" rounded-lg dark:bg-gray-800 mr-2 bg-gray-50">
-    <ul class="mt-2">
-      <li class="relative px-6 py-3">
-        <span id="dashboard" class="{{ request()->is('dashboard') ? '' : 'hidden' }} absolute inset-y-0 left-0 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-        <a href="/dashboard" wire:navigate @click="closeMenuMobile" class=" inline-flex items-center w-full text-sm font-semibold text-gray-500 transition-colors duration-150
+   <x-application-logo
+    class="w-28 h-16 mt-2.5 mb-2 text-violet-600 dark:text-violet-300 hover:text-violet-700 dark:hover:text-violet-500" />
+  </a>
+ </div>
+ <div class=" rounded-lg dark:bg-gray-800 mr-2 bg-gray-50">
+  <ul class="mt-2">
+   <li class="relative px-6 py-3">
+    <span id="dashboard"
+     class="{{ request()->is('dashboard') ? '' : 'hidden' }} absolute inset-y-0 left-0 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg"
+     aria-hidden="true"></span>
+    <a href="/dashboard" wire:navigate @click="closeMenuMobile" class=" inline-flex items-center w-full text-sm font-semibold text-gray-500 transition-colors duration-150
      hover:text-violet-500 dark:hover:text-violet-400 dark:text-gray-400">
-          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-style" viewBox="0 0 16 16">
-            <path d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm8 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm8 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-4-4a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1z" />
-          </svg>
-          <span class="ml-4">Dashboard</span>
-        </a>
-      </li>
-    </ul>
-    <ul>
-      <li class="relative px-6 py-3">
-        <span id="project" class="{{ request()->is('daftar-tamu') ? '' : 'hidden' }} absolute inset-y-0 left-3 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-violet-500 dark:hover:text-violet-400" href="/daftar-tamu" wire:navigate>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5" viewBox="0 0 16 16">
-            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-          </svg>
-          <span class="ml-4">Daftar tamu</span>
-        </a>
-      </li>
+     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+      class="bi bi-border-style" viewBox="0 0 16 16">
+      <path
+       d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm8 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm8 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-4-4a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1z" />
+     </svg>
+     <span class="ml-4">Dashboard</span>
+    </a>
+   </li>
+  </ul>
+  <ul>
+   <li class="relative px-6 py-3">
+    <span id="project"
+     class="{{ request()->is('daftar-tamu') ? '' : 'hidden' }} absolute inset-y-0 left-3 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg"
+     aria-hidden="true"></span>
+    <a
+     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-violet-500 dark:hover:text-violet-400"
+     href="/daftar-tamu" wire:navigate>
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5"
+      viewBox="0 0 16 16">
+      <path
+       d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+     </svg>
+     <span class="ml-4">Daftar tamu</span>
+    </a>
+   </li>
 
-    </ul>
-    <ul>
-      <li class="relative px-6 py-3">
-        <span id="project" class="{{ request()->is('daftar-tamu-reservasi') ? '' : 'hidden' }} absolute inset-y-0 left-3 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-violet-500 dark:hover:text-violet-400" href="/daftar-tamu-reservasi" wire:navigate>
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-check" viewBox="0 0 16 16">
-            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-            <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
-          </svg>
-          <span class="ml-4">Reservasi</span>
-        </a>
-      </li>
+  </ul>
+  <ul>
+   <li class="relative px-6 py-3">
+    <span id="project"
+     class="{{ request()->is('daftar-tamu-reservasi') ? '' : 'hidden' }} absolute inset-y-0 left-3 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg"
+     aria-hidden="true"></span>
+    <a
+     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-violet-500 dark:hover:text-violet-400"
+     href="/daftar-tamu-reservasi" wire:navigate>
+     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+      class="bi bi-person-fill-check" viewBox="0 0 16 16">
+      <path
+       d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+      <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+     </svg>
+     <span class="ml-4">Reservasi</span>
+    </a>
+   </li>
 
-    </ul>
-    <!-- <ul>
+  </ul>
+  <!-- <ul>
    <li class="relative px-6 py-3" x-data="{ postMenuOpen : false }">
     <span id="post"
      class="{{ request()->is('new-posts') || request()->is('all-posts') || request()->is('post-draft') || request()->is('post-categorys') || request()->is('post-category-edit/*') || request()->is('posts-archives') ? '' : 'hidden' }} absolute inset-y-0 left-3 w-1 bg-violet-600 rounded-tr-lg rounded-br-lg"
@@ -396,11 +413,12 @@
     </div>
    </li>
   </ul> -->
-  </div>
-  <div class="px-6 my-6">
-    <a href="/register" class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-violet-600 border border-transparent rounded-lg active:bg-violet-600 hover:bg-violet-700 focus:outline-none focus:shadow-outline-violet">
-      Add Admin
-      <span class="ml-2" aria-hidden="true">+</span>
-    </a>
-  </div>
+ </div>
+ <div class="px-6 my-6">
+  <a href="/register"
+   class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-violet-600 border border-transparent rounded-lg active:bg-violet-600 hover:bg-violet-700 focus:outline-none focus:shadow-outline-violet">
+   Add Admin
+   <span class="ml-2" aria-hidden="true">+</span>
+  </a>
+ </div>
 </div>
