@@ -11,7 +11,7 @@ class UndanganController extends Controller
     public function sigle_undangan($slug)
     {
         $tamu = Tamu::where('slug', '=', $slug)->first();
-        return view('adi-dan-risma', compact('tamu'));
+        return view('safri-dan-ika', compact('tamu'));
     }
 
     public function save_rsvp(Request $rsvp)

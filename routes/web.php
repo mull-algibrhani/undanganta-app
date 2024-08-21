@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 // Route::view('/dari-adi-saputra-dan-rismawati/kepada-yth-{slug}', 'adi-dan-risma');
-Route::get('/dari-adi-saputra-dan-rismawati/kepada-yth-{slug}', [UndanganController::class, 'sigle_undangan'])->name('sigle_undangan');
+Route::get('/dari-muh-safri-dan-ika-irawati/kepada-yth-{slug}', [UndanganController::class, 'sigle_undangan'])->name('sigle_undangan');
 Route::post('/submit-rsvp', [UndanganController::class, 'save_rsvp'])->name('submit-rsvp');
 
 Route::view('profile', 'livewire.profile.profile')

@@ -85,13 +85,13 @@
            </div>
           </td>
           <td class="px-4 py-3 text-sm sm:text-xs">
-           https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}
+           https://www.undanganta.online/dari-muh-safri-dan-ika-irawati/kepada-yth-{{$item->slug}}
           </td>
           <td class="px-4 py-3 text-xs">
            <div class="flex items-center space-x-3">
             <div class="relative">
              <button
-              onclick="copyToClipboard('https://www.undanganta.online/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}')"
+              onclick="copyToClipboard('https://www.undanganta.online/dari-muh-safri-dan-ika-irawati/kepada-yth-{{$item->slug}}')"
               class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-sky-500 border border-transparent rounded-lg active:bg-sky-600 hover:bg-sky-600 focus:outline-none focus:shadow-outline-sky">
               <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                <path fill-rule="evenodd"
@@ -101,7 +101,7 @@
              </button>
             </div>
 
-            <a href="/dari-adi-saputra-dan-rismawati/kepada-yth-{{$item->slug}}" target="_blank"
+            <a href="/dari-muh-safri-dan-ika-irawati/kepada-yth-{{$item->slug}}" target="_blank"
              class="flex items-center justify-between px-2 py-1 font-medium leading-5 text-white transition-colors duration-150 bg-violet-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
              <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
