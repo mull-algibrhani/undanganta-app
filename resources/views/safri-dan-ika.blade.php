@@ -449,15 +449,14 @@
        class="img-fluid w-100 rounded">
      </a>
     </div>
+    <div class="col mt-3">
+     <a href="{{asset('wedding/img-safri/gallery/prawed-18.jpg')}}" data-toggle="lightbox" data-caption="Safri & Ika 18"
+      data-gallery="mygallery">
+      <img src="{{asset('wedding/img-safri/gallery/thumbnail/prawed-18.jpg')}}" alt="Safri & Ika 18"
+       class="img-fluid w-100 rounded">
+     </a>
+    </div>
    </div>
-   <div class="col mt-3">
-    <a href="{{asset('wedding/img-safri/gallery/prawed-18.jpg')}}" data-toggle="lightbox" data-caption="Safri & Ika 18"
-     data-gallery="mygallery">
-     <img src="{{asset('wedding/img-safri/gallery/thumbnail/prawed-18.jpg')}}" alt="Safri & Ika 18"
-      class="img-fluid w-100 rounded">
-    </a>
-   </div>
-  </div>
  </section>
 
  <section id="rsvp" class="rsvp">
